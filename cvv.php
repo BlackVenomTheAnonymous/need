@@ -31,9 +31,9 @@ $sk = $_GET['sec'];
 if(!$sk){
   #$sk = "";
 $sks = array(
-"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",
-"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",
-"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"
+"sk_live_psEIuES6US3eq8CfsDwObbSD00xmQFG0ur",
+"sk_live_psEIuES6US3eq8CfsDwObbSD00xmQFG0ur",
+"sk_live_psEIuES6US3eq8CfsDwObbSD00xmQFG0ur"
 );
   $sk = $sks[array_rand($sks)];    
 }
