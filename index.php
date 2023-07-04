@@ -25,7 +25,7 @@
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-body text-center">
-					<h4 class="mb-2"><strong>Checker </strong></h4>
+					<h4 class="mb-2"><strong> •【↯ CᴏᴅᴇヤCrafters】• </strong></h4>
 
 					<textarea rows="12" class="form-control text-center form-checker mb-2" placeholder="PUT YOUR CARDS HERE"></textarea>
 					          <select name="gate" id="gate" class="form-control" style="margin-bottom: 5px;"
@@ -130,7 +130,7 @@
 
 </style>
 <footer>
-  <p>Change The Footer in Index</p>
+  <p>•【CᴏᴅᴇヤCrafting⎋Nexus】•</p>
 </footer>
 <script>
 
@@ -147,7 +147,7 @@ const swalWithBootstrapButtons = Swal.mixin({
 
 swalWithBootstrapButtons.fire({
   title: "Checker", 
-  text: "You Can Change This in INDEX",
+  text: "🚀 Join CodeCrafters' coding community on Telegram! Share code snippets, explore PHP, Python, and Solidity, and unlock your coding potential. 💻",
   icon: 'success',
   showCancelButton: false,
   confirmButtonText: 'Start',
