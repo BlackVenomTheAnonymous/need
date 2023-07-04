@@ -30,7 +30,8 @@
 					<textarea rows="12" class="form-control text-center form-checker mb-2" placeholder="PUT YOUR CARDS HERE"></textarea>
 					          <select name="gate" id="gate" class="form-control" style="margin-bottom: 5px;"
     <option </option>
-	            <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="chk.php">API 1 ✅</option>
+	            <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="chk.php">1$ CCN ✅</option>
+		    <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="cvv.php">1$ CVV ✅</option>
 </select>
 	<br>										
 					<button class="btn btn-play btn-glow btn-bg-gradient-x-blue-cyan text-white" style="width: 49%; float: left;"><i class="fa fa-play"></i>START</button>
