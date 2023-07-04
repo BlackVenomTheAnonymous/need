@@ -146,7 +146,7 @@ const swalWithBootstrapButtons = Swal.mixin({
 })
 
 swalWithBootstrapButtons.fire({
-  title: "Checker", 
+  title: "CᴏᴅᴇヤCrafting⎋Nexus", 
   text: "🚀 Join CodeCrafters' coding community on Telegram! Share code snippets, explore PHP, Python, and Solidity, and unlock your coding potential. 💻",
   icon: 'success',
   showCancelButton: false,
